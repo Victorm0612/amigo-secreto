@@ -94,7 +94,7 @@
       grid-template-rows: repeat(1, 1fr);
       background-repeat: repeat;
       height: calc(100vh - 11rem);
-      overflow: auto;
+      overflow: scroll;
     }
 
     &__item {
