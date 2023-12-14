@@ -4,10 +4,14 @@
 .game {
   width: 100%;
   height: 100vh;
-  background:  linear-gradient(to bottom right, rgb(22, 11, 26), rgba(255, 192, 203, 0.342)), url('../assets/img/background_3.jpeg');
+  background:  linear-gradient(to bottom right, rgb(22, 11, 26), rgba(255, 192, 203, 0.342)), url('../assets/img/compress/background_3.jpeg');
   background-size: cover;
   background-position: 0 0px;
   background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    background-repeat: repeat;
+  }
 }
 
 .start-menu {
@@ -48,7 +52,7 @@
     border-radius: 5px;
     animation: appear 1s;
 
-    &:hover {
+    &:hover, &:active {
       background-color: $color-02;
       box-shadow: 0 0 3px 2px rgba(252, 252, 252, 0.24);
       cursor: pointer;
@@ -84,6 +88,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      background-repeat: repeat;
+      height: calc(100vh - 11rem);
+      overflow: auto;
+    }
 
     &__item {
       cursor: pointer;
@@ -123,7 +135,7 @@
         }
       }
 
-      &:hover {
+      &:hover, &:active {
         .caption {
           opacity: 1;
           background-color: rgba(0, 0, 0, 0.5);
@@ -240,7 +252,7 @@
         }
       }
 
-      &:hover {
+      &:hover, &:active {
         .caption {
           opacity: 1;
           background-color: rgba(0, 0, 0, 0.5);
@@ -275,15 +287,15 @@
 }
 
 @keyframes loader {
-  0%{ background-image: url("../assets/img/daniela_150x150.png"); background-size: cover; background-repeat: no-repeat;}
-  10%{ background-image: url("../assets/img/laura_prado.png"); background-size: cover; background-repeat: no-repeat;}
-  20%{ background-image: url("../assets/img/eri.png"); background-size: cover; background-repeat: no-repeat;}
-  30%{ background-image: url("../assets/img/paula.png"); background-size: cover; background-repeat: no-repeat;}
-  40%{ background-image: url("../assets/img/maleja.png"); background-size: cover; background-repeat: no-repeat;}
-  50%{ background-image: url("../assets/img/maria_claudia.png"); background-size: cover; background-repeat: no-repeat;}
-  60%{ background-image: url("../assets/img/sara.png"); background-size: cover; background-repeat: no-repeat;}
-  70%{ background-image: url("../assets/img/laura_serna.png"); background-size: cover; background-repeat: no-repeat;}
-  80%{ background-image: url("../assets/img/laura_prado.png"); background-size: cover; background-repeat: no-repeat;}
-  90%{ background-image: url("../assets/img/daniela_150x150.png"); background-size: cover; background-repeat: no-repeat;}
-  100%{ background-image: url("../assets/img/Nata.png"); background-size: cover; background-repeat: no-repeat;}
+  0%{ background-image: url("../assets/img/compress/daniela_150x150-min.png"); background-size: cover; background-repeat: no-repeat;}
+  10%{ background-image: url("../assets/img/compress/laura_prado-min.png"); background-size: cover; background-repeat: no-repeat;}
+  20%{ background-image: url("../assets/img/compress/eri-min.png"); background-size: cover; background-repeat: no-repeat;}
+  30%{ background-image: url("../assets/img/compress/paula-min.png"); background-size: cover; background-repeat: no-repeat;}
+  40%{ background-image: url("../assets/img/compress/maleja-min.png"); background-size: cover; background-repeat: no-repeat;}
+  50%{ background-image: url("../assets/img/compress/maria_claudia-min.png"); background-size: cover; background-repeat: no-repeat;}
+  60%{ background-image: url("../assets/img/compress/sara-min.png"); background-size: cover; background-repeat: no-repeat;}
+  70%{ background-image: url("../assets/img/compress/laura_serna-min.png"); background-size: cover; background-repeat: no-repeat;}
+  80%{ background-image: url("../assets/img/compress/laura_prado-min.png"); background-size: cover; background-repeat: no-repeat;}
+  90%{ background-image: url("../assets/img/compress/daniela_150x150-min.png"); background-size: cover; background-repeat: no-repeat;}
+  100%{ background-image: url("../assets/img/compress/Nata-min.png"); background-size: cover; background-repeat: no-repeat;}
 }

@@ -19,7 +19,7 @@
         class="choice-menu--list__item"
         (click)="nextToPlay(item)"
       >
-        <img [src]="'assets/img/'+item.image+'.png'"/>
+        <img [src]="'assets/img/compress/'+item.image+'-min.png'"/>
         <div class="caption">
           <p>{{item.lastname}}</p>
           <h1>{{item.name}}</h1>
@@ -47,9 +47,8 @@
       <div
         [id]="ticket.id"
         class="reveal-menu--body__item"
-        (click)="nextToPlay(ticket)"
       >
-        <img [src]="'assets/img/'+ticket.image+'.png'"/>
+        <img [src]="'assets/img/compress/'+ticket.image+'-min.png'"/>
         <div class="caption">
           <p>{{ticket.lastname}}</p>
           <h1>{{ticket.name}}</h1>
