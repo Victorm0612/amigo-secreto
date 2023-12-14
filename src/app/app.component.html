@@ -1,0 +1,60 @@
+<section class="game">
+  <section class="start-menu" *ngIf="stepEnum.Initial === currentState">
+    <header class="start-menu--header">
+      <img src="assets/img/logo.png" alt="icono amigo secreto" width="200px" height="auto"/>
+      <h1>¡Tanga secreta!</h1>
+    </header>
+    <button type="button" (click)="nextToChoose()">Empezar</button>
+  </section>
+
+  <section class="choice-menu" *ngIf="stepEnum.WhoAreYou === currentState">
+    <header>
+      <h1>¿Quién eres?</h1>
+      <img src="assets/img/logo.png" alt="icono amigo secreto" width="100px" height="auto"/>
+    </header>
+    <div class="choice-menu--list">
+      <div
+        *ngFor="let item of images"
+        [id]="item.id"
+        class="choice-menu--list__item"
+        (click)="nextToPlay(item)"
+      >
+        <img [src]="'assets/img/'+item.image+'.png'"/>
+        <div class="caption">
+          <p>{{item.lastname}}</p>
+          <h1>{{item.name}}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="playing-menu" *ngIf="stepEnum.Playing === currentState">
+    <header>
+      <h1>Mmm... ¡Vamos a ver quién te tocó!</h1>
+      <img src="assets/img/logo.png" alt="icono amigo secreto" width="100px" height="auto"/>
+    </header>
+    <div class="playing-menu--loading">
+    </div>
+  </section>
+
+  <section class="reveal-menu" *ngIf="stepEnum.Reveal === currentState">
+    <header>
+      <h1>¡Mira! Te tocó:</h1>
+      <img src="assets/img/logo.png" alt="icono amigo secreto" width="100px" height="auto"/>
+    </header>
+
+    <div class="reveal-menu--body" *ngIf="ticket">
+      <div
+        [id]="ticket.id"
+        class="reveal-menu--body__item"
+        (click)="nextToPlay(ticket)"
+      >
+        <img [src]="'assets/img/'+ticket.image+'.png'"/>
+        <div class="caption">
+          <p>{{ticket.lastname}}</p>
+          <h1>{{ticket.name}}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
