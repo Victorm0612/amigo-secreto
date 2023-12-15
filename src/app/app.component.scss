@@ -95,6 +95,8 @@
       background-repeat: repeat;
       height: calc(100vh - 11rem);
       overflow: scroll;
+      width: 100%;
+      justify-items: center;
     }
 
     &__item {
