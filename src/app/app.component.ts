@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemModel, StepEnum, UserModel } from './models';
+import { SessionService } from './services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -25,13 +26,17 @@ export class AppComponent implements OnInit {
     {  id: 8, image: 'eri', name: 'Erika', lastname: 'Barón', friend: 9 },
   ]
 
+  constructor(
+    private sessionService: SessionService
+  ) {}
+
   ngOnInit(): void {
-    const found = localStorage.getItem('user');
-    const ticket = localStorage.getItem('ticket');
+    const found = this.sessionService.getCookie('user');
+    const ticket = this.sessionService.getCookie('ticket');
 
     if (found && ticket) {
-      this.user = JSON.parse(found);
-      this.ticket = JSON.parse(ticket);
+      this.user = found;
+      this.ticket = ticket;
       this.currentState = StepEnum.Reveal;
     }
   }
@@ -45,7 +50,7 @@ export class AppComponent implements OnInit {
       name: item.name,
       lastname: item.lastname
     };
-    localStorage.setItem('user', JSON.stringify(this.user));
+    this.sessionService.setCookie('user', this.user, 20);
     this.currentState = StepEnum.Playing;
     this.isLoading = true;
     setTimeout(() => this.revealFriend(), 3000);
@@ -58,7 +63,8 @@ export class AppComponent implements OnInit {
       return;
     }
     this.ticket = this.images.find(item => item.id === found);
-    localStorage.setItem('ticket', JSON.stringify(this.ticket));
+    this.sessionService.setCookie('ticket', this.ticket, 20);
+    this.isLoading = false;
     this.currentState = StepEnum.Reveal;
   }
 }
