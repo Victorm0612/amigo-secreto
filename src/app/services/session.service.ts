@@ -27,7 +27,11 @@ export class SessionService {
       let c = ca[i];
       while (c.charAt(0)==' ') c = c.substring(1,c.length);
 
-      if (c.indexOf(nameEQ) == 0) return JSON.parse(decodeURIComponent(c.substring(nameEQ.length,c.length)));
+      if (c.indexOf(nameEQ) == 0) {
+        const found = c.substring(nameEQ.length,c.length);
+        const decodedFound = decodeURIComponent(window.atob(found));
+        return JSON.parse(decodedFound);
+      };
     }
     return null;
   }
